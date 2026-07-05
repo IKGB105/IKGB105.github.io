@@ -299,6 +299,119 @@
     max-width:72ch;
   }
 
+  /* ---------- image placeholder ---------- */
+  .img-placeholder{
+    margin-top:14px;
+    height:220px;
+    border:1px dashed var(--border-bright);
+    background:
+      repeating-linear-gradient(135deg, rgba(147,164,154,0.04) 0px, rgba(147,164,154,0.04) 1px, transparent 1px, transparent 14px),
+      var(--bg-panel-2);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px;
+    color:var(--text-faint);
+  }
+  .img-placeholder svg{width:26px; height:26px; opacity:0.6;}
+  .img-placeholder span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:1px; text-transform:uppercase;
+  }
+
+  /* ---------- featured / in-progress project ---------- */
+  .project.featured{
+    border:1px solid var(--signal-dim);
+    background:
+      linear-gradient(180deg, rgba(111,255,176,0.05), transparent 40%),
+      var(--bg-panel);
+    position:relative;
+    padding-top:24px;
+  }
+  .featured-badge{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:14px;
+  }
+  .featured-badge .pulse-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 8px var(--signal);
+    animation:blink 1.6s ease-in-out infinite;
+  }
+  .featured .project-title{font-size:19px;}
+  .milestone-list{
+    margin-top:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .milestone-list .done::before{content:'[x] '; color:var(--signal);}
+  .milestone-list .next::before{content:'[ ] '; color:var(--copper-bright);}
+
+  /* ---------- collapsible projects grid ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:12px;
+    align-items:start;
+  }
+  .project.card{
+    padding:0;
+    margin-bottom:0;
+    overflow:hidden;
+    transition:grid-column .15s ease;
+  }
+  .project-head{
+    all:unset;
+    box-sizing:border-box;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    width:100%;
+    padding:18px 20px;
+    cursor:pointer;
+  }
+  .project-head:hover{background:rgba(193,127,74,0.05);}
+  .project-head:focus-visible{outline:2px solid var(--copper); outline-offset:-2px;}
+  .project-head-text{min-width:0;}
+  .project-head-text .module-tag{margin-bottom:10px;}
+  .project-head-text .project-title{
+    font-size:15px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .project-head-text .project-tech{margin-bottom:0;}
+  .chevron{
+    width:16px; height:16px; flex-shrink:0;
+    color:var(--text-faint);
+    margin-top:4px;
+    transition:transform .2s ease, color .15s ease;
+  }
+  .project-head:hover .chevron{color:var(--copper-bright);}
+  .project-more{
+    position:relative;
+    max-height:108px;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .project-more::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:0; height:40px;
+    background:linear-gradient(to bottom, transparent, var(--bg-panel));
+    pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .project-more-inner{
+    padding:0 20px 20px;
+  }
+  .project.card.open .chevron{transform:rotate(180deg);}
+  .project.card.open .project-more{max-height:600px;}
+  .project.card.open .project-more::after{opacity:0;}
+  .project.card.open{grid-column:1 / -1;}
+
+  @media (prefers-reduced-motion: reduce){
+    .project-more, .chevron{transition:none;}
+  }
+
   /* ================= LANGUAGES ================= */
   .lang-grid{
     display:grid;
@@ -449,41 +562,197 @@
   <section id="projects">
     <div class="pin-label"><span class="pin-square"></span>key projects</div>
 
-    <div class="project">
-      <div class="module-tag">module: riscv_cpu_top</div>
-      <div class="project-title">RISC-V CPU Architecture Model</div>
-      <div class="project-tech">Python / Amaranth HDL &amp; Verilog</div>
+    <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — In Progress</div>
+      <div class="module-tag">module: dmg01_top</div>
+      <div class="project-title">Cycle-Accurate Game Boy (DMG-01) Emulator</div>
+      <div class="project-tech">Verilog / Verilator / C++</div>
+      <div class="project-desc">Building a cycle-accurate Game Boy (DMG-01) emulator entirely in Verilog, verified against a C++ testbench using Verilator. The project models the original hardware at the RTL level — CPU, memory bus, and clock generation — rather than emulating behavior in software.</div>
+      <div class="milestone-list">
+        <div class="done">Resolved critical bugs in the memory bus module (memory_bus.v)</div>
+        <div class="done">Exposed a raw 16-bit system counter from the clock module (clocks.v)</div>
+        <div class="next">Next: I/O register support to validate against blargg's CPU test ROMs</div>
+      </div>
+      <div class="img-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Waveform / architecture diagram — coming soon</span>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: riscv_cpu_top</div>
+          <div class="project-title">RISC-V CPU Architecture Model</div>
+          <div class="project-tech">Python / Amaranth HDL &amp; Verilog</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
       <a class="project-link" href="https://github.com/IKGB105/RISC-V-CPU-Designs" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        github.com/IKGB105/RISC-V-CPU-Designs
-      </a>
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/RISC-V-CPU-Designs
+            </a>
       <div class="project-desc">Designed and implemented a RISC-V architecture model with full instruction decode logic (opcode, registers, immediates). Implemented core datapath components including a 32-bit ALU, dual-port RegisterFile (32×32), control unit, and instruction decoder. Debugged datapath and control inconsistencies using waveform analysis (GTKWave), isolating timing and logic errors across multiple test cases. Validated instruction execution through structured testbenches and simulation-driven verification.</div>
+        </div>
+      </div>
     </div>
 
-    <div class="project">
-      <div class="module-tag">module: fp32_alu</div>
-      <div class="project-title">IEEE-754 Floating-Point Calculator</div>
-      <div class="project-tech">VHDL / Xilinx Synthesis</div>
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: fp32_alu</div>
+          <div class="project-title">IEEE-754 Floating-Point Calculator</div>
+          <div class="project-tech">VHDL / Xilinx Synthesis</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/IEEE-754-Calc-VHDL" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/IEEE-754-Calc-VHDL
+            </a>
       <div class="project-desc">Developed a single-precision (32-bit) IEEE-754 floating-point unit in VHDL as part of a team project. Collaborated on modular datapath design, integrating arithmetic units across team components. Implemented addition, subtraction, multiplication, and division. Handled normalization, rounding, and exception cases (NaN, overflow, underflow). Cross-validated hardware results with ARM Assembly implementations to ensure arithmetic correctness at low level.</div>
+        </div>
+      </div>
     </div>
 
-    <div class="project">
-      <div class="module-tag">module: rfid_access_ctrl</div>
-      <div class="project-title">RFID Access Control System</div>
-      <div class="project-tech">C / STM32F446 / ARM Cortex-M4</div>
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: rfid_access_ctrl</div>
+          <div class="project-title">RFID Access Control System</div>
+          <div class="project-tech">C / STM32F446 / ARM Cortex-M4</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
       <a class="project-link" href="https://github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx
-      </a>
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/RFID-Access-Control-using-STM32F446RETx
+            </a>
       <div class="project-desc">Developed an embedded system for RFID-based access control with real-time processing. Collaborated in system integration and testing, ensuring reliable interaction between hardware and firmware components. Designed interrupt-driven architecture and state machines for reliable tag detection and system response. Built low-level drivers and handled peripheral communication on ARM Cortex-M4. Debugged hardware/software interaction using OpenOCD and GDB at register level.</div>
+        </div>
+      </div>
     </div>
 
-    <div class="project">
-      <div class="module-tag">module: rtos_embedded_ll</div>
-      <div class="project-title">Embedded Systems &amp; Low-Level Programming</div>
-      <div class="project-tech">ARM Cortex-M4 Assembly &amp; C/C++ / FreeRTOS / STM32</div>
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: rtos_embedded_ll</div>
+          <div class="project-title">Embedded Systems &amp; Low-Level Programming</div>
+          <div class="project-tech">ARM Cortex-M4 Assembly &amp; C/C++ / FreeRTOS / STM32</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
       <div class="project-desc">Developed ARM Cortex-M4 assembly and C/C++ programs focusing on direct hardware control and real-time systems. Implemented GPIO control, timers/PWM, UART communication, and interrupt service routines using register-level programming. Built FreeRTOS-based applications with multitasking, scheduling, and synchronization primitives. Analyzed and debugged concurrency issues and timing behavior in embedded environments.</div>
+        </div>
+      </div>
     </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: arm_vaquita_pcb</div>
+          <div class="project-title">ARM Processor PCB Design</div>
+          <div class="project-tech">KiCad</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/PCB-ARM-Kicad" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/PCB-ARM-Kicad
+            </a>
+      <div class="project-desc">Designed and routed a PCB for an ARM processor in KiCad, from schematic capture through component placement and trace routing.</div>
+      <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Board photo / render — placeholder</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: complex_solver</div>
+          <div class="project-title">Py-ComplexCalc</div>
+          <div class="project-tech">Python (GUI)</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/Py-ComplexCalc" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/Py-ComplexCalc
+            </a>
+      <div class="project-desc">A desktop GUI app for instantly solving n×n linear systems with complex numbers and phasors. Features dual-format input/output, dark/light themes, auto-save, and batch solving — built for electronics engineers and circuit analysts.</div>
+      <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>App screenshot — placeholder</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: transistor_designer</div>
+          <div class="project-title">Transistor Designer Calculator</div>
+          <div class="project-tech">Python (GUI)</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/transistor-designer-calculator" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/transistor-designer-calculator
+            </a>
+      <div class="project-desc">A Python tool for designing and analyzing electronic circuits with various transistor types — supports parameter calculations and analysis to assist the design process.</div>
+      <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>App screenshot — placeholder</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: fft_upscale</div>
+          <div class="project-title">Py-FFT-Upscaling</div>
+          <div class="project-tech">Python (GUI)</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/Py-FFT-Upscaling" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/Py-FFT-Upscaling
+            </a>
+      <div class="project-desc">An FFT-based image upscaling tool with a GUI. Batch processes images, applies custom scaling factors, and generates PDF reports with upscaled results and FFT spectra.</div>
+      <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Before / after image — placeholder</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
   </section>
 
   <!-- ================= LANGUAGES ================= -->
@@ -537,6 +806,20 @@
       el.textContent = values[i];
     }, 1400);
   })();
+
+  // Expand/collapse project cards
+  (function(){
+    var heads = document.querySelectorAll('.project-head');
+    heads.forEach(function(head){
+      head.addEventListener('click', function(){
+        var card = head.closest('.project.card');
+        var isOpen = card.classList.contains('open');
+        card.classList.toggle('open', !isOpen);
+        head.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  })();
+
 </script>
 
 </body>
