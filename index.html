@@ -43,7 +43,7 @@
 
   ::selection{background:var(--copper); color:#0d1410;}
 
-  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
 
   /* ---------- pin label / section markers ---------- */
   .pin-label{
@@ -79,22 +79,18 @@
     position:relative;
   }
 
-  .header-content{
-    position:relative;
-    z-index:1;
-  }
-
-  /* ---------- rotating 3D PCB background ---------- */
+  /* ---------- rotating 3D PCB background (fixed, centered, behind all content) ---------- */
   .pcb-bg-wrap{
-    position:absolute;
-    top:-30px; right:-30px;
-    width:280px; height:280px;
-    perspective:1100px;
+    position:fixed;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    width:420px; height:420px;
+    perspective:1300px;
     pointer-events:none;
     z-index:0;
-    opacity:0.45;
-    -webkit-mask-image: radial-gradient(circle at 58% 42%, black 42%, transparent 76%);
-    mask-image: radial-gradient(circle at 58% 42%, black 42%, transparent 76%);
+    opacity:0.32;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 74%);
+    mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 74%);
   }
   .pcb-3d{
     width:100%; height:100%;
@@ -413,6 +409,18 @@
   .milestone-list .done::before{content:'[x] '; color:var(--signal);}
   .milestone-list .next::before{content:'[ ] '; color:var(--copper-bright);}
 
+  .course-list{
+    margin-top:10px;
+    padding-left:0;
+    list-style:none;
+    display:flex; flex-direction:column; gap:7px;
+    font-size:13.5px;
+    color:var(--text-dim);
+    line-height:1.5;
+  }
+  .course-list li{ position:relative; padding-left:17px; }
+  .course-list li::before{ content:'•'; position:absolute; left:0; color:var(--copper-bright); font-weight:700; }
+
   /* ---------- collapsible projects grid ---------- */
   .projects-grid{
     display:grid;
@@ -522,20 +530,20 @@
 </head>
 <body>
 
+<div class="pcb-bg-wrap" aria-hidden="true">
+  <div class="pcb-3d">
+    <img class="pcb-face pcb-front" src="images/pcb-front.png" alt="">
+    <img class="pcb-face pcb-back" src="images/pcb-back.png" alt="">
+    <div class="pcb-edge pcb-edge-top"></div>
+    <div class="pcb-edge pcb-edge-bottom"></div>
+    <div class="pcb-edge pcb-edge-left"></div>
+    <div class="pcb-edge pcb-edge-right"></div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <header>
-    <div class="pcb-bg-wrap" aria-hidden="true">
-      <div class="pcb-3d">
-        <img class="pcb-face pcb-front" src="images/pcb-front.png" alt="">
-        <img class="pcb-face pcb-back" src="images/pcb-back.png" alt="">
-        <div class="pcb-edge pcb-edge-top"></div>
-        <div class="pcb-edge pcb-edge-bottom"></div>
-        <div class="pcb-edge pcb-edge-left"></div>
-        <div class="pcb-edge pcb-edge-right"></div>
-      </div>
-    </div>
-    <div class="header-content">
     <div class="eyebrow"><span class="dot"></span>AVAILABLE FOR HARDWARE / RTL ROLES</div>
     <h1 class="name">Iker Emiliano Garcia Barrera</h1>
     <div class="role">Digital Design <span>·</span> FPGA <span>·</span> Computer Architecture</div>
@@ -586,7 +594,6 @@
         </svg>
         <span class="trace-readout" id="hexReadout">0x2F</span>
       </div>
-    </div>
     </div>
   </header>
 
@@ -899,7 +906,14 @@
       </button>
       <div class="project-more">
         <div class="project-more-inner">
-      <div class="project-desc">Academic digital design labs from coursework at UAA, across two FPGA toolchains. Examples include combinational and sequential logic design, finite state machines, counters and clock dividers, and testbench-driven verification — a mix of Xilinx ISE/ISim projects and Gowin EDA projects.</div>
+      <div class="project-desc">Academic digital design labs from coursework at UAA, across two FPGA toolchains — Xilinx ISE/ISim and Gowin EDA. Examples of what I built:</div>
+      <ul class="course-list">
+        <li>Made combinational logic designs: multiplexers, decoders, priority encoders, and a custom ALU</li>
+        <li>Built sequential logic circuits: D/JK flip-flops, counters, shift registers, and clock dividers</li>
+        <li>Designed finite state machines for control logic and sequence detection</li>
+        <li>Wrote testbenches and ran simulation-driven verification (ISim / Gowin simulator)</li>
+        <li>Synthesized and mapped designs to real FPGA hardware with pin/timing constraints</li>
+      </ul>
       <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
         <a class="project-link" href="https://github.com/IKGB105/vhdl-xilinx-labs" target="_blank" rel="noopener" style="margin-bottom:0;">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
