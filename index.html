@@ -84,8 +84,8 @@
     position:fixed;
     top:50%; left:50%;
     transform:translate(-50%, -50%);
-    width:420px; height:420px;
-    perspective:1300px;
+    width:470px; height:470px;
+    perspective:1400px;
     pointer-events:none;
     z-index:0;
     opacity:0.32;
@@ -118,18 +118,18 @@
     object-fit:contain;
     backface-visibility:hidden;
   }
-  .pcb-face.pcb-front{ transform: translateZ(7px); }
-  .pcb-face.pcb-back{ transform: translateZ(-7px) rotateY(180deg); }
+  .pcb-face.pcb-front{ transform: translateZ(3px); }
+  .pcb-face.pcb-back{ transform: translateZ(-3px) rotateY(180deg); }
   .pcb-edge{
     position:absolute;
     background:linear-gradient(180deg, var(--border-bright), var(--border));
   }
-  .pcb-edge-top, .pcb-edge-bottom{ left:0; width:100%; height:14px; }
-  .pcb-edge-top{ top:0; transform:rotateX(90deg) translateZ(7px); }
-  .pcb-edge-bottom{ bottom:0; transform:rotateX(-90deg) translateZ(7px); }
-  .pcb-edge-left, .pcb-edge-right{ top:0; height:100%; width:14px; }
-  .pcb-edge-left{ left:0; transform:rotateY(-90deg) translateZ(7px); }
-  .pcb-edge-right{ right:0; transform:rotateY(90deg) translateZ(7px); }
+  .pcb-edge-top, .pcb-edge-bottom{ left:0; width:100%; height:6px; }
+  .pcb-edge-top{ top:0; transform:rotateX(90deg) translateZ(3px); }
+  .pcb-edge-bottom{ bottom:0; transform:rotateX(-90deg) translateZ(3px); }
+  .pcb-edge-left, .pcb-edge-right{ top:0; height:100%; width:6px; }
+  .pcb-edge-left{ left:0; transform:rotateY(-90deg) translateZ(3px); }
+  .pcb-edge-right{ right:0; transform:rotateY(90deg) translateZ(3px); }
 
   @media (max-width:760px){
     .pcb-bg-wrap{ display:none; }
@@ -582,6 +582,10 @@
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.146 1.146C.417 1.875.417 3.03 1.146 3.759c.729.729 1.884.729 2.613 0 .729-.729.729-1.884 0-2.613-.729-.729-1.884-.729-2.613 0zM0 5.333h3.333V16H0V5.333zm5.333 0H8.5v1.455h.047c.44-.833 1.515-1.712 3.12-1.712C14.667 5.076 16 6.588 16 9.167V16h-3.333v-6.02c0-1.435-.026-3.281-2-3.281-2.002 0-2.309 1.563-2.309 3.175V16H5.333V5.333z"/></svg>
         LinkedIn
       </a>
+      <a href="CV.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        CV (PDF)
+      </a>
     </div>
 
     <!-- SIGNATURE ELEMENT: logic-analyzer style waveform panel -->
@@ -968,32 +972,30 @@
 </div>
 
 <script>
-  // Scanning cursor across the CLK trace
+  // Scanning cursor across the CLK trace, with hex readout locked to the
+  // DATA segment currently under the cursor (was on an unrelated timer before)
   (function(){
     var cursor = document.getElementById('scanCursor');
+    var hex = document.getElementById('hexReadout');
     if(!cursor) return;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(prefersReduced) return;
+    var segmentValues = ['0x2F','0xA3','0x1C','0x7E','0x94','0x0B','0xD1','0x5A'];
+    var segmentWidth = 600 / segmentValues.length;
     var x = 0;
+    var lastSegment = -1;
     function animate(){
       x = (x + 1.5) % 600;
       cursor.setAttribute('x1', x);
       cursor.setAttribute('x2', x);
+      var segment = Math.floor(x / segmentWidth);
+      if(hex && segment !== lastSegment){
+        lastSegment = segment;
+        hex.textContent = segmentValues[segment];
+      }
       requestAnimationFrame(animate);
     }
     requestAnimationFrame(animate);
-  })();
-
-  // Rotating hex readout on the DATA trace
-  (function(){
-    var el = document.getElementById('hexReadout');
-    if(!el) return;
-    var values = ['0x2F','0xA3','0x1C','0x7E','0x94','0x0B'];
-    var i = 0;
-    setInterval(function(){
-      i = (i + 1) % values.length;
-      el.textContent = values[i];
-    }, 1400);
   })();
 
   // Expand/collapse project cards
