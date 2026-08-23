@@ -679,18 +679,22 @@
 
     <div class="project featured">
       <div class="featured-badge"><span class="pulse-dot"></span>Featured — In Progress</div>
-      <div class="module-tag">module: dmg01_top</div>
-      <div class="project-title">Cycle-Accurate Game Boy (DMG-01) Emulator</div>
-      <div class="project-tech">Verilog / Verilator / C++</div>
-      <div class="project-desc">Building a cycle-accurate Game Boy (DMG-01) emulator entirely in Verilog, verified against a C++ testbench using Verilator. The project models the original hardware at the RTL level — CPU, memory bus, and clock generation — rather than emulating behavior in software. The goal is a complete system model, not an isolated processor core.</div>
+      <div class="module-tag">module: power_electronics_pcbs</div>
+      <div class="project-title">Power Electronics PCBs</div>
+      <div class="project-tech">KiCad / LTspice / STM32</div>
+      <a class="project-link" href="https://github.com/IKGB105/power-electronics-pcbs" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/IKGB105/power-electronics-pcbs
+      </a>
+      <div class="project-desc">Five physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render: an SCR/thyristor firing controller, a buck converter, an STM32-controlled Class D amplifier, a DC-AC inverter, and a two-board protected voltage supply with short-circuit protection.</div>
       <div class="milestone-list">
-        <div class="done">Resolved critical bugs in the memory bus module (memory_bus.v)</div>
-        <div class="done">Exposed a raw 16-bit system counter from the clock module (clocks.v)</div>
-        <div class="next">Next: I/O register support to validate against blargg's CPU test ROMs</div>
+        <div class="done">SCR controller, buck converter, Class D amp, and protected power supply — designed, routed, and rendered</div>
+        <div class="done">Power supply's power stage fully routed with fabrication-ready Gerbers</div>
+        <div class="next">Next: photos of the built boards, and fixing a malformed board outline on the inverter</div>
       </div>
       <div class="img-placeholder">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <span>Waveform / architecture diagram — coming soon</span>
+        <span>Board photos — coming soon</span>
       </div>
     </div>
 
