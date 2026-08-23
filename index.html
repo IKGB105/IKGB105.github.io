@@ -628,30 +628,6 @@
       </a>
     </div>
 
-    <!-- SIGNATURE ELEMENT: logic-analyzer style waveform panel -->
-    <div class="scope">
-      <div class="scope-head">
-        <span>LOGIC_ANALYZER — CH0/CH1</span>
-        <span id="clkFreq">CLK = 8 MHz</span>
-      </div>
-      <div class="trace-row">
-        <span class="trace-name">CLK</span>
-        <svg class="trace-svg" viewBox="0 0 600 30" preserveAspectRatio="none">
-          <path d="M0,22 L0,8 L40,8 L40,22 L80,22 L80,8 L120,8 L120,22 L160,22 L160,8 L200,8 L200,22 L240,22 L240,8 L280,8 L280,22 L320,22 L320,8 L360,8 L360,22 L400,22 L400,8 L440,8 L440,22 L480,22 L480,8 L520,8 L520,22 L560,22 L560,8 L600,8"
-                fill="none" stroke="var(--signal)" stroke-width="2"/>
-          <line id="scanCursor" x1="0" y1="0" x2="0" y2="30" class="scanline"/>
-        </svg>
-        <span class="trace-readout">2.4V</span>
-      </div>
-      <div class="trace-row">
-        <span class="trace-name">DATA</span>
-        <svg class="trace-svg" viewBox="0 0 600 30" preserveAspectRatio="none">
-          <path d="M0,22 L0,8 L75,8 L75,22 L150,22 L150,8 L225,8 L225,22 L300,22 L300,8 L375,8 L375,22 L450,22 L450,8 L525,8 L525,22 L600,22"
-                fill="none" stroke="var(--copper)" stroke-width="2"/>
-        </svg>
-        <span class="trace-readout" id="hexReadout">0x2F</span>
-      </div>
-    </div>
   </header>
 
   <!-- ================= OVERVIEW ================= -->
@@ -667,6 +643,10 @@
     <div class="pin-label"><span class="pin-square"></span>technical skills</div>
     <div class="skills-grid">
       <div class="skill-box">
+        <div class="skill-label">PCB Design</div>
+        <div class="skill-content">KiCad (schematic capture, 2-layer routing, ground pours), LTspice, Multisim — fabrication-ready Gerbers</div>
+      </div>
+      <div class="skill-box">
         <div class="skill-label">HDL &amp; FPGA</div>
         <div class="skill-content">Verilog (RTL Design), VHDL, Xilinx (ISE), Gowin EDA, Amaranth HDL</div>
       </div>
@@ -678,9 +658,9 @@
         <div class="skill-label">Programming</div>
         <div class="skill-content">C, Python, ARM Assembly, C++</div>
       </div>
-      <div class="skill-box">
+      <div class="skill-box skill-box-wide">
         <div class="skill-label">Tools &amp; Debug</div>
-        <div class="skill-content">Git, GTKWave, OpenOCD, GDB, KiCAD, COMSOL, Linux (CLI, Bash)</div>
+        <div class="skill-content">Git, GTKWave, OpenOCD, GDB, COMSOL, Linux (CLI, Bash)</div>
       </div>
       <div class="skill-box skill-box-wide">
         <div class="skill-label">Verification</div>
@@ -714,11 +694,11 @@
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
         github.com/IKGB105/power-electronics-pcbs
       </a>
-      <div class="project-desc">Five physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render: an SCR/thyristor firing controller, a buck converter, an STM32-controlled Class D amplifier, a DC-AC inverter, and a two-board protected voltage supply with short-circuit protection.</div>
+      <div class="project-desc">Four physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render: an SCR/thyristor firing controller, a buck converter, an STM32-controlled Class D amplifier, and a two-board protected voltage supply with short-circuit protection.</div>
       <div class="milestone-list">
         <div class="done">SCR controller, buck converter, Class D amp, and protected power supply — designed, routed, and rendered</div>
         <div class="done">Power supply's power stage fully routed with fabrication-ready Gerbers</div>
-        <div class="next">Next: photos of the built boards — the inverter has no PCB layout yet, schematic/firmware only</div>
+        <div class="next">Next: photos of the built boards</div>
       </div>
       <div class="render-grid">
         <figure>
@@ -1018,6 +998,34 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
           <span>Certificate photo — coming soon</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scope-section">
+    <div class="pin-label"><span class="pin-square"></span>signal trace</div>
+    <!-- SIGNATURE ELEMENT: logic-analyzer style waveform panel -->
+    <div class="scope">
+      <div class="scope-head">
+        <span>LOGIC_ANALYZER — CH0/CH1</span>
+        <span id="clkFreq">CLK = 8 MHz</span>
+      </div>
+      <div class="trace-row">
+        <span class="trace-name">CLK</span>
+        <svg class="trace-svg" viewBox="0 0 600 30" preserveAspectRatio="none">
+          <path d="M0,22 L0,8 L40,8 L40,22 L80,22 L80,8 L120,8 L120,22 L160,22 L160,8 L200,8 L200,22 L240,22 L240,8 L280,8 L280,22 L320,22 L320,8 L360,8 L360,22 L400,22 L400,8 L440,8 L440,22 L480,22 L480,8 L520,8 L520,22 L560,22 L560,8 L600,8"
+                fill="none" stroke="var(--signal)" stroke-width="2"/>
+          <line id="scanCursor" x1="0" y1="0" x2="0" y2="30" class="scanline"/>
+        </svg>
+        <span class="trace-readout">2.4V</span>
+      </div>
+      <div class="trace-row">
+        <span class="trace-name">DATA</span>
+        <svg class="trace-svg" viewBox="0 0 600 30" preserveAspectRatio="none">
+          <path d="M0,22 L0,8 L75,8 L75,22 L150,22 L150,8 L225,8 L225,22 L300,22 L300,8 L375,8 L375,22 L450,22 L450,8 L525,8 L525,22 L600,22"
+                fill="none" stroke="var(--copper)" stroke-width="2"/>
+        </svg>
+        <span class="trace-readout" id="hexReadout">0x2F</span>
       </div>
     </div>
   </section>
