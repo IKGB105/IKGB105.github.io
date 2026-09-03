@@ -710,9 +710,9 @@
       <div class="module-tag">module: power_electronics_pcbs</div>
       <div class="project-title">Power Electronics PCBs</div>
       <div class="project-tech">KiCad / LTspice / STM32</div>
-      <a class="project-link" href="https://github.com/IKGB105/power-electronics-pcbs" target="_blank" rel="noopener">
+      <a class="project-link" href="https://github.com/IKGB105/PCBs-POWER-ELECTRONICS" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        github.com/IKGB105/power-electronics-pcbs
+        github.com/IKGB105/PCBs-POWER-ELECTRONICS
       </a>
       <div class="project-desc">Four physical PCBs from power electronics coursework, each with its own schematic, layout, and 3D render: an SCR/thyristor firing controller, a buck converter, an STM32-controlled Class D amplifier, and a two-board protected voltage supply with short-circuit protection.</div>
       <div class="milestone-list">
@@ -740,6 +740,38 @@
         <figure>
           <img src="images/pe-power-supply-control-stage.png" alt="3D render of the protected power supply's control stage PCB">
           <figcaption>Power supply — control stage</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — In Progress</div>
+      <div class="module-tag">module: lm317_power_supply</div>
+      <div class="project-title">Adjustable LM317 Power Supply — SPICE, PCB &amp; Thermal FEM</div>
+      <div class="project-tech">LTspice / KiCad / COMSOL Multiphysics</div>
+      <a class="project-link" href="https://github.com/IKGB105/LM317-Adjustable-PowerSupply" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/IKGB105/LM317-Adjustable-PowerSupply
+      </a>
+      <div class="project-desc">Full power-supply design loop documented as an honest engineering logbook: LTspice simulation of the adjustable topology, KiCad PCB layout, and a COMSOL thermal FEM study of the regulator's worst-case junction temperature that drove two rounds of heatsink selection. The simulation step caught a real 76mV arithmetic error in an earlier hand calculation before it propagated into the thermal analysis.</div>
+      <div class="milestone-list">
+        <div class="done">LTspice topology simulated and cross-checked against hand calculations</div>
+        <div class="done">KiCad PCB routed, ERC/DRC clean</div>
+        <div class="done">COMSOL thermal FEM: worst-case T_J narrowed to ~19°C over the LM317's rated max</div>
+        <div class="next">Next: close the remaining thermal margin before physical build</div>
+      </div>
+      <div class="render-grid">
+        <figure>
+          <img src="images/lm317-ltspice-schematic.png" alt="LTspice schematic of the adjustable LM317 topology">
+          <figcaption>LTspice — schematic</figcaption>
+        </figure>
+        <figure>
+          <img src="images/lm317-pcb-3d.png" alt="3D render of the LM317 power supply PCB">
+          <figcaption>KiCad — PCB 3D render</figcaption>
+        </figure>
+        <figure>
+          <img src="images/lm317-comsol-thermal.png" alt="COMSOL thermal FEM result showing the LM317 and heatsink temperature distribution">
+          <figcaption>COMSOL — thermal result</figcaption>
         </figure>
       </div>
     </div>
