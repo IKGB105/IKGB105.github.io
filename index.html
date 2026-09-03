@@ -372,6 +372,8 @@
   .featured-split .featured-text .project-desc{ max-width:none; }
   .featured-split .featured-media{ flex:1 1 45%; min-width:0; }
   .featured-split .featured-media .render-grid{ grid-template-columns:1fr; margin-top:0; }
+  .featured-media-compact{ flex:0 1 260px; max-width:260px; align-self:flex-start; }
+  .featured-media-compact .render-grid img{ aspect-ratio:16/10; }
   .featured-split .project-img{
     margin-top:0;
     max-height:none;
@@ -783,7 +785,7 @@
             <div class="next">Next: close the remaining thermal margin before physical build</div>
           </div>
         </div>
-        <div class="featured-media">
+        <div class="featured-media featured-media-compact">
           <div class="render-grid">
             <figure>
               <img src="images/lm317-ltspice-schematic.png" alt="LTspice schematic of the adjustable LM317 topology">
