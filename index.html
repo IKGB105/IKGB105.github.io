@@ -770,6 +770,43 @@
       </div>
     </div>
     <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — Design Complete</div>
+      <div class="module-tag">module: lm2596_buck_converter</div>
+      <div class="featured-split">
+        <div class="featured-text">
+          <div class="project-title">Adjustable LM2596 Buck Converter — PCB &amp; Thermal FEM</div>
+          <div class="project-tech">KiCad / COMSOL Multiphysics</div>
+          <a class="project-link" href="https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/IKGB105/LM2596-Adjustable-Buck-Converter
+          </a>
+          <div class="project-desc">Companion project to the LM317 supply above, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built.</div>
+          <div class="milestone-list">
+            <div class="done">KiCad PCB routed, ERC/DRC clean, built on the datasheet's own validated reference circuit</div>
+            <div class="done">COMSOL thermal FEM swept across the full adjustable range (0.5–3 A, worst-case Vin/Vout ratio)</div>
+            <div class="done">Root-caused the real thermal limit to the catch diode, not the regulator IC — isolated ground via at D1's anode</div>
+          </div>
+        </div>
+        <div class="featured-media featured-media-compact">
+          <div class="render-grid">
+            <figure>
+              <img src="images/lm2596-schematic.png" alt="KiCad schematic of the LM2596 adjustable buck converter">
+              <figcaption>KiCad — schematic</figcaption>
+            </figure>
+            <figure>
+              <img src="images/lm2596-pcb-3d.png" alt="3D render of the LM2596 buck converter PCB">
+              <figcaption>KiCad — PCB 3D render</figcaption>
+            </figure>
+            <figure>
+              <img src="images/lm2596-comsol-thermal.png" alt="COMSOL thermal FEM result for the LM2596 buck converter at the demonstration operating point">
+              <figcaption>COMSOL — thermal result</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project featured">
       <div class="featured-badge"><span class="pulse-dot"></span>Featured — Completed</div>
       <div class="module-tag">module: power_electronics_pcbs</div>
       <div class="project-title">Power Electronics PCBs</div>
@@ -804,6 +841,30 @@
           <img src="images/pe-power-supply-control-stage.png" alt="3D render of the protected power supply's control stage PCB">
           <figcaption>Power supply — control stage</figcaption>
         </figure>
+      </div>
+    </div>
+
+    <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — Flying</div>
+      <div class="module-tag">module: ik_dron</div>
+      <div class="featured-split">
+        <div class="featured-text">
+          <div class="project-title">IK-Dron — 5&quot; FPV Racing Drone</div>
+          <div class="project-tech">BetaFlight / SpeedyBee F405 V4</div>
+          <a class="project-link" href="https://github.com/IKGB105/IK-Dron" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/IKGB105/IK-Dron
+          </a>
+          <div class="project-desc">Team project (with <a href="https://github.com/DasReyxr" target="_blank" rel="noopener">Orlando Contreras</a>): diagnosed and flew a 5&quot; racing drone after its original flight controller suffered an unrecoverable hardware failure. Migrated to a SpeedyBee F405 V4 stack on BetaFlight, then root-caused a "won't lift off, then disarms on takeoff" failure via the flight controller's CLI to a propeller/motor-rotation mismatch tripping BetaFlight's runaway-takeoff protection. Real hardware/firmware debugging under a hard constraint — it has to actually fly.</div>
+          <div class="milestone-list">
+            <div class="done">Migrated from a burned-out CC3D/LibrePilot controller to SpeedyBee F405 V4 on BetaFlight 4.4.3</div>
+            <div class="done">Root-caused the takeoff failure via BetaFlight's CLI, not trial-and-error</div>
+            <div class="done">Stable, controlled flight achieved October 13, 2026</div>
+          </div>
+        </div>
+        <div class="featured-media">
+          <img class="project-img" src="images/ik-dron-photo.png" alt="Photo of the assembled IK-Dron 5-inch racing drone">
+        </div>
       </div>
     </div>
 
