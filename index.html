@@ -807,6 +807,46 @@
     </div>
 
     <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — Design Complete</div>
+      <div class="module-tag">module: efuse_ltc4215_hotswap</div>
+      <div class="featured-split">
+        <div class="featured-text">
+          <div class="project-title">Hot-Swap eFuse (LTC4215) — PCB &amp; Thermal FEM</div>
+          <div class="project-tech">LTspice / KiCad / COMSOL Multiphysics</div>
+          <a class="project-link" href="https://github.com/IKGB105/EFUSE-LTC4215-HotSwap" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/IKGB105/EFUSE-LTC4215-HotSwap
+          </a>
+          <div class="project-desc">12V hot-swap/eFuse front-end built around the LTC4215: controlled inrush, latching overcurrent shutdown, and auto-retry undervoltage lockout, validated in LTspice against the IC's own internal startup-delay behavior. A coupled electrical-thermal COMSOL model — current in the copper solved together with the heat — found the copper pours themselves were the dominant heat source at the rated 15A, not the MOSFET or sense resistor alone, driving a lower, thermally-safe continuous-current recommendation.</div>
+          <div class="milestone-list">
+            <div class="done">LTspice: inrush, undervoltage auto-recovery, and hard-short latch-off all match the datasheet's startup-sequencer behavior</div>
+            <div class="done">KiCad PCB routed, ERC/DRC clean</div>
+            <div class="done">Coupled electrical-thermal COMSOL model found the copper pours — not the regulator components — set the real thermal limit at 15A</div>
+          </div>
+          <div class="milestone-list">
+            <div class="next">Not yet sent to fabrication — simulation + layout only, by design</div>
+          </div>
+        </div>
+        <div class="featured-media featured-media-compact">
+          <div class="render-grid">
+            <figure>
+              <img src="images/efuse-schematic.png" alt="KiCad schematic of the LTC4215 hot-swap eFuse front-end">
+              <figcaption>KiCad — schematic</figcaption>
+            </figure>
+            <figure>
+              <img src="images/efuse-pcb-3d.png" alt="3D render of the LTC4215 hot-swap eFuse PCB">
+              <figcaption>KiCad — PCB 3D render</figcaption>
+            </figure>
+            <figure>
+              <img src="images/efuse-comsol-thermal.png" alt="COMSOL coupled electrical-thermal FEM result at 15A, showing the copper pours as the dominant heat source">
+              <figcaption>COMSOL — thermal result (15A)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project featured">
       <div class="featured-badge"><span class="pulse-dot"></span>Featured — Completed</div>
       <div class="module-tag">module: power_electronics_pcbs</div>
       <div class="project-title">Power Electronics PCBs</div>
