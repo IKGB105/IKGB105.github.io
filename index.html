@@ -513,6 +513,9 @@
   .project-head-text .featured-badge,
   .project-head-text .module-tag{display:flex; width:fit-content;}
   .project-head-text .module-tag{margin-bottom:10px;}
+  .project-head-text .project-tech{
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
   .project-head-thumb{
     flex:0 0 auto;
     width:60px; height:60px;
@@ -948,46 +951,6 @@
     <div class="project card">
       <button class="project-head" type="button" aria-expanded="false">
         <div class="project-head-text">
-          <div class="module-tag">module: riscv_cpu_top</div>
-          <div class="project-title">RISC-V CPU Architecture Model</div>
-          <div class="project-tech">Python / Amaranth HDL &amp; Verilog</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="project-more">
-        <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/RISC-V-CPU-Designs" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/RISC-V-CPU-Designs
-            </a>
-      <div class="project-desc">Designed and implemented a RISC-V architecture model with full instruction decode logic (opcode, registers, immediates). Implemented core datapath components including a 32-bit ALU, dual-port RegisterFile (32×32), control unit, and instruction decoder. Debugged datapath and control inconsistencies using waveform analysis (GTKWave), isolating timing and logic errors across multiple test cases. Validated instruction execution through structured testbenches and simulation-driven verification.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <button class="project-head" type="button" aria-expanded="false">
-        <div class="project-head-text">
-          <div class="module-tag">module: fp32_alu</div>
-          <div class="project-title">IEEE-754 Floating-Point Calculator</div>
-          <div class="project-tech">VHDL / Xilinx Synthesis</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="project-more">
-        <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/IEEE-754-Calc-VHDL" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/IEEE-754-Calc-VHDL
-            </a>
-      <div class="project-desc">Developed a single-precision (32-bit) IEEE-754 floating-point unit in VHDL as part of a team project. Collaborated on modular datapath design, integrating arithmetic units across team components. Implemented addition, subtraction, multiplication, and division. Handled normalization, rounding, and exception cases (NaN, overflow, underflow). Cross-validated hardware results with ARM Assembly implementations to ensure arithmetic correctness at low level.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <button class="project-head" type="button" aria-expanded="false">
-        <div class="project-head-text">
           <div class="module-tag">module: rfid_access_ctrl</div>
           <div class="project-title">RFID Access Control System</div>
           <div class="project-tech">C / STM32F446 / ARM Cortex-M4</div>
@@ -1008,6 +971,26 @@
     <div class="project card">
       <button class="project-head" type="button" aria-expanded="false">
         <div class="project-head-text">
+          <div class="module-tag">module: riscv_cpu_top</div>
+          <div class="project-title">RISC-V CPU Architecture Model</div>
+          <div class="project-tech">Python / Amaranth HDL &amp; Verilog</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/RISC-V-CPU-Designs" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/RISC-V-CPU-Designs
+            </a>
+      <div class="project-desc">Designed and implemented a RISC-V architecture model with full instruction decode logic (opcode, registers, immediates). Implemented core datapath components including a 32-bit ALU, dual-port RegisterFile (32×32), control unit, and instruction decoder. Debugged datapath and control inconsistencies using waveform analysis (GTKWave), isolating timing and logic errors across multiple test cases. Validated instruction execution through structured testbenches and simulation-driven verification.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
           <div class="module-tag">module: rtos_embedded_ll</div>
           <div class="project-title">Embedded Systems &amp; Low-Level Programming</div>
           <div class="project-tech">ARM Cortex-M4 Assembly &amp; C/C++ / FreeRTOS / STM32</div>
@@ -1017,6 +1000,46 @@
       <div class="project-more">
         <div class="project-more-inner">
       <div class="project-desc">Developed ARM Cortex-M4 assembly and C/C++ programs focusing on direct hardware control and real-time systems. Implemented GPIO control, timers/PWM, UART communication, and interrupt service routines using register-level programming. Built FreeRTOS-based applications with multitasking, scheduling, and synchronization primitives. Analyzed and debugged concurrency issues and timing behavior in embedded environments.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: lm2596_buck_converter</div>
+          <div class="project-title">Adjustable LM2596 Buck Converter — PCB &amp; Thermal FEM</div>
+          <div class="project-tech">KiCad / COMSOL Multiphysics</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/LM2596-Adjustable-Buck-Converter
+            </a>
+      <div class="project-desc">Companion project to the LM317 supply, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: pid_rlc_control</div>
+          <div class="project-title">Analog PID Control of a Series RLC Circuit</div>
+          <div class="project-tech">LTspice / KiCad / Op-Amp Analog Design</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/PID-RLC" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/PID-RLC
+            </a>
+      <div class="project-desc">Team project (with <a href="https://github.com/DasReyxr" target="_blank" rel="noopener">Orlando Contreras</a> and <a href="https://github.com/Gyonyu" target="_blank" rel="noopener">Kevin Lara</a>): op-amp based PID controller designed by root locus / pole placement to eliminate the step-response overshoot of an underdamped series RLC plant (f₀ ≈ 5 kHz, ζ ≈ 0.2, predicted ~53% open-loop overshoot). First of two related course projects — the second applies the same PID methodology to a buck converter.</div>
         </div>
       </div>
     </div>
@@ -1045,23 +1068,19 @@
     <div class="project card">
       <button class="project-head" type="button" aria-expanded="false">
         <div class="project-head-text">
-          <div class="module-tag">module: complex_solver</div>
-          <div class="project-title">Py-ComplexCalc</div>
-          <div class="project-tech">Python (GUI)</div>
+          <div class="module-tag">module: fp32_alu</div>
+          <div class="project-title">IEEE-754 Floating-Point Calculator</div>
+          <div class="project-tech">VHDL / Xilinx Synthesis</div>
         </div>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="project-more">
         <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/Py-ComplexCalc" target="_blank" rel="noopener">
+      <a class="project-link" href="https://github.com/IKGB105/IEEE-754-Calc-VHDL" target="_blank" rel="noopener">
               <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/Py-ComplexCalc
+              github.com/IKGB105/IEEE-754-Calc-VHDL
             </a>
-      <div class="project-desc">A desktop GUI app for instantly solving n×n linear systems with complex numbers and phasors. Features dual-format input/output, dark/light themes, auto-save, and batch solving — built for electronics engineers and circuit analysts.</div>
-      <div class="img-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>App screenshot — placeholder</span>
-            </div>
+      <div class="project-desc">Developed a single-precision (32-bit) IEEE-754 floating-point unit in VHDL as part of a team project. Collaborated on modular datapath design, integrating arithmetic units across team components. Implemented addition, subtraction, multiplication, and division. Handled normalization, rounding, and exception cases (NaN, overflow, underflow). Cross-validated hardware results with ARM Assembly implementations to ensure arithmetic correctness at low level.</div>
         </div>
       </div>
     </div>
@@ -1110,66 +1129,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               <span>Before / after image — placeholder</span>
             </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <button class="project-head" type="button" aria-expanded="false">
-        <div class="project-head-text">
-          <div class="module-tag">module: lm2596_buck_converter</div>
-          <div class="project-title">Adjustable LM2596 Buck Converter — PCB &amp; Thermal FEM</div>
-          <div class="project-tech">KiCad / COMSOL Multiphysics</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="project-more">
-        <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/LM2596-Adjustable-Buck-Converter
-            </a>
-      <div class="project-desc">Companion project to the LM317 supply, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <button class="project-head" type="button" aria-expanded="false">
-        <div class="project-head-text">
-          <div class="module-tag">module: pid_rlc_control</div>
-          <div class="project-title">Analog PID Control of a Series RLC Circuit</div>
-          <div class="project-tech">LTspice / KiCad / Op-Amp Analog Design</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="project-more">
-        <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/PID-RLC" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/PID-RLC
-            </a>
-      <div class="project-desc">Team project (with <a href="https://github.com/DasReyxr" target="_blank" rel="noopener">Orlando Contreras</a> and <a href="https://github.com/Gyonyu" target="_blank" rel="noopener">Kevin Lara</a>): op-amp based PID controller designed by root locus / pole placement to eliminate the step-response overshoot of an underdamped series RLC plant (f₀ ≈ 5 kHz, ζ ≈ 0.2, predicted ~53% open-loop overshoot). First of two related course projects — the second applies the same PID methodology to a buck converter.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <button class="project-head" type="button" aria-expanded="false">
-        <div class="project-head-text">
-          <div class="module-tag">module: complex_solver_mobile</div>
-          <div class="project-title">Complex Calc — Android App</div>
-          <div class="project-tech">React / Capacitor / Android</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="project-more">
-        <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/Complex-System-Solver" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/Complex-System-Solver
-            </a>
-      <div class="project-desc">Mobile port of Py-ComplexCalc for Android, built with React and Capacitor. Solves n×n linear systems with complex numbers and phasor notation, with a custom mobile keyboard, matrix transpose/inverse, real-time determinant display, and swipe-based solution history.</div>
         </div>
       </div>
     </div>
