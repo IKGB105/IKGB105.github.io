@@ -509,8 +509,19 @@
   }
   .project-head:hover{background:rgba(193,127,74,0.05);}
   .project-head:focus-visible{outline:2px solid var(--copper); outline-offset:-2px;}
-  .project-head-text{min-width:0;}
+  .project-head-text{min-width:0; flex:1 1 auto;}
+  .project-head-text .featured-badge,
+  .project-head-text .module-tag{display:flex; width:fit-content;}
   .project-head-text .module-tag{margin-bottom:10px;}
+  .project-head-thumb{
+    flex:0 0 auto;
+    width:60px; height:60px;
+    overflow:hidden;
+    border:1px solid var(--border-bright);
+    background:var(--bg-panel-2);
+  }
+  .project-head-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .project.card.card-media.open .project-head-thumb{display:none;}
   .project-head-text .project-title{
     font-size:15px;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -801,11 +812,12 @@
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
             github.com/IKGB105/EFUSE-LTC4215-HotSwap
           </a>
-          <div class="project-desc">12V hot-swap/eFuse front-end built around the LTC4215: controlled inrush, latching overcurrent shutdown, and auto-retry undervoltage lockout, validated in LTspice against the IC's own internal startup-delay behavior. A coupled electrical-thermal COMSOL model — current in the copper solved together with the heat — found the copper pours themselves were the dominant heat source at the rated 15A, not the MOSFET or sense resistor alone, driving a lower, thermally-safe continuous-current recommendation.</div>
+          <div class="project-desc">12V hot-swap/eFuse front-end built around the LTC4215: controlled inrush, latching overcurrent shutdown, and auto-retry undervoltage lockout, validated in LTspice against the IC's own internal startup-delay behavior. Inrush peaks at 5.2A — almost exactly on the calculated 5A circuit-breaker target — and V_OUT reaches 12V in ≈51ms. A 12V→8V dip triggers a fast ~300µs sag then a full, unattended recovery, but only ~106–112ms after V_DD returns, because the LTC4215's internal startup-sequencer delay re-arms on every restart, not just power-up — a non-obvious pitfall documented so it isn't re-discovered from scratch next time. A coupled electrical-thermal COMSOL model — current in the copper solved together with the heat — found the copper pours themselves dissipate 1.6W, almost 2x the ≈0.9W an earlier hand estimate gave, pushing the sense resistor (not the MOSFET) to 170°C at the rated 15A with convection only. 12.5A continuous is the thermally comfortable recommendation instead (128°C / 113°C).</div>
           <div class="milestone-list">
             <div class="done">LTspice: inrush, undervoltage auto-recovery, and hard-short latch-off all match the datasheet's startup-sequencer behavior</div>
-            <div class="done">KiCad PCB routed, ERC/DRC clean</div>
+            <div class="done">KiCad PCB routed, ERC/DRC clean — QFN-24 package required for the OV protection pin, Kelvin-sensed current-sense resistor</div>
             <div class="done">Coupled electrical-thermal COMSOL model found the copper pours — not the regulator components — set the real thermal limit at 15A</div>
+            <div class="done">Hand-calculated copper loss (≈0.9W) corrected by the coupled simulation to 1.6W — almost 2x higher</div>
           </div>
           <div class="milestone-list">
             <div class="next">Not yet sent to fabrication — simulation + layout only, by design</div>
@@ -863,6 +875,7 @@
             <div class="project-title">Power Electronics PCBs</div>
             <div class="project-tech">KiCad / LTspice / STM32</div>
           </div>
+          <div class="project-head-thumb"><img src="images/pe-classd-amp.png" alt=""></div>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="project-more">
@@ -910,6 +923,7 @@
             <div class="project-title">IK-Dron — 5&quot; FPV Racing Drone</div>
             <div class="project-tech">BetaFlight / SpeedyBee F405 V4</div>
           </div>
+          <div class="project-head-thumb"><img src="images/ik-dron-photo.png" alt=""></div>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="project-more">
