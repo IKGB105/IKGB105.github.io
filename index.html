@@ -662,7 +662,7 @@
   <section id="overview">
     <div class="pin-label"><span class="pin-square"></span>overview</div>
     <div class="summary">
-      <p>Electronics engineering student <strong>(7th semester, UAA)</strong> building toward complete hardware systems — not isolated pieces. Designed and routed boards from schematic to fabrication-ready Gerbers — an <strong>ARM Cortex-M platform</strong>, power-electronics coursework, and an <strong>LM317 supply</strong> validated end-to-end in LTspice, KiCad, and COMSOL thermal FEM — and deployed a production hardware/firmware/software safety-interlock system running at a food manufacturing plant. Computer-architecture depth (RISC-V CPU components, IEEE-754 arithmetic units) still shows up in how I approach hardware, though it's supporting evidence now, not the focus. Strong background in debugging at both hardware and software levels using waveform analysis and low-level tools. Focused on platform and system hardware roles — owning the full stack: firmware, power, and software working together.</p>
+      <p>Electronics engineering student <strong>(7th semester, UAA)</strong> building toward complete hardware systems — not isolated pieces. Designed and routed boards from schematic to fabrication-ready Gerbers — an <strong>ARM Cortex-M platform</strong>, a <strong>hot-swap eFuse</strong>, closed-loop PID control, and a family of adjustable power supplies — validated end-to-end in LTspice, KiCad, and COMSOL thermal FEM — and deployed a production hardware/firmware/software safety-interlock system running at a food manufacturing plant. Computer-architecture depth (RISC-V CPU components, IEEE-754 arithmetic units) still shows up in how I approach hardware, though it's supporting evidence now, not the focus. Strong background in debugging at both hardware and software levels using waveform analysis and low-level tools. Focused on platform and system hardware roles — owning the full stack: firmware, power, and software working together.</p>
     </div>
   </section>
 
@@ -771,43 +771,6 @@
     </div>
     <div class="project featured">
       <div class="featured-badge"><span class="pulse-dot"></span>Featured — Design Complete</div>
-      <div class="module-tag">module: lm2596_buck_converter</div>
-      <div class="featured-split">
-        <div class="featured-text">
-          <div class="project-title">Adjustable LM2596 Buck Converter — PCB &amp; Thermal FEM</div>
-          <div class="project-tech">KiCad / COMSOL Multiphysics</div>
-          <a class="project-link" href="https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/IKGB105/LM2596-Adjustable-Buck-Converter
-          </a>
-          <div class="project-desc">Companion project to the LM317 supply above, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built.</div>
-          <div class="milestone-list">
-            <div class="done">KiCad PCB routed, ERC/DRC clean, built on the datasheet's own validated reference circuit</div>
-            <div class="done">COMSOL thermal FEM swept across the full adjustable range (0.5–3 A, worst-case Vin/Vout ratio)</div>
-            <div class="done">Root-caused the real thermal limit to the catch diode, not the regulator IC — isolated ground via at D1's anode</div>
-          </div>
-        </div>
-        <div class="featured-media featured-media-compact">
-          <div class="render-grid">
-            <figure>
-              <img src="images/lm2596-schematic.png" alt="KiCad schematic of the LM2596 adjustable buck converter">
-              <figcaption>KiCad — schematic</figcaption>
-            </figure>
-            <figure>
-              <img src="images/lm2596-pcb-3d.png" alt="3D render of the LM2596 buck converter PCB">
-              <figcaption>KiCad — PCB 3D render</figcaption>
-            </figure>
-            <figure>
-              <img src="images/lm2596-comsol-thermal.png" alt="COMSOL thermal FEM result for the LM2596 buck converter at the demonstration operating point">
-              <figcaption>COMSOL — thermal result</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project featured">
-      <div class="featured-badge"><span class="pulse-dot"></span>Featured — Design Complete</div>
       <div class="module-tag">module: efuse_ltc4215_hotswap</div>
       <div class="featured-split">
         <div class="featured-text">
@@ -842,6 +805,30 @@
               <figcaption>COMSOL — thermal result (15A)</figcaption>
             </figure>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project featured">
+      <div class="featured-badge"><span class="pulse-dot"></span>Featured — Deployed in Production</div>
+      <div class="module-tag">module: iot_safety_interlock</div>
+      <div class="featured-split">
+        <div class="featured-text">
+          <div class="project-title">IoT Safety Checklist &amp; Hardware Interlock System</div>
+          <div class="project-tech">Node.js / Express / Raspberry Pi / Capacitor</div>
+          <a class="project-link" href="https://github.com/IKGB105/IOT-Safety-Checklist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            github.com/IKGB105/IOT-Safety-Checklist
+          </a>
+          <div class="project-desc">Production-deployed system for a food manufacturing plant that digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired in series with the start-button circuit only closes after full checklist approval. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo-evidence capture, automatic WhatsApp alerts on safety violations, and an audited supervisor emergency-release flow. Strongest evidence of full-stack integration: hardware, firmware, and software, actually running, not a class exercise.</div>
+          <div class="milestone-list">
+            <div class="done">Deployed and running at a real food manufacturing plant, not a demo</div>
+            <div class="done">Fully offline Raspberry Pi stack: WiFi access point, web server, REST API</div>
+            <div class="done">Photo-evidence capture, WhatsApp alerts, audited supervisor override flow</div>
+          </div>
+        </div>
+        <div class="featured-media">
+          <img class="project-img" src="images/iot-app-screenshot.png" alt="Screenshot of the IoT Safety Checklist app interface">
         </div>
       </div>
     </div>
@@ -1081,19 +1068,39 @@
     <div class="project card">
       <button class="project-head" type="button" aria-expanded="false">
         <div class="project-head-text">
-          <div class="module-tag">module: iot_safety_interlock</div>
-          <div class="project-title">IoT Safety Checklist &amp; Hardware Interlock System</div>
-          <div class="project-tech">Node.js / Express / Raspberry Pi / Capacitor</div>
+          <div class="module-tag">module: lm2596_buck_converter</div>
+          <div class="project-title">Adjustable LM2596 Buck Converter — PCB &amp; Thermal FEM</div>
+          <div class="project-tech">KiCad / COMSOL Multiphysics</div>
         </div>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="project-more">
         <div class="project-more-inner">
-      <a class="project-link" href="https://github.com/IKGB105/IOT-Safety-Checklist" target="_blank" rel="noopener">
+      <a class="project-link" href="https://github.com/IKGB105/LM2596-Adjustable-Buck-Converter" target="_blank" rel="noopener">
               <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-              github.com/IKGB105/IOT-Safety-Checklist
+              github.com/IKGB105/LM2596-Adjustable-Buck-Converter
             </a>
-      <div class="project-desc">Production-deployed system for a food manufacturing plant that digitizes pre-shift machine safety checklists and physically interlocks machine startup — a Shelly smart relay wired in series with the start-button circuit only closes after full checklist approval. Runs fully offline on a Raspberry Pi acting as its own WiFi access point, web server, and REST API. Includes photo-evidence capture, automatic WhatsApp alerts on safety violations, and an audited supervisor emergency-release flow.</div>
+      <div class="project-desc">Companion project to the LM317 supply, built mainly for hands-on KiCad layout practice (trace sizing, ground-plane strategy, via stitching) before moving into multiphase VRM work. A COMSOL thermal sweep across the full adjustable range found the real thermal limit wasn't the regulator IC — it was the catch diode, exceeding its rated junction temperature at the low-output-voltage extreme. Root-caused to an isolated ground via at the diode's anode; fix proposed, not yet built.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project card">
+      <button class="project-head" type="button" aria-expanded="false">
+        <div class="project-head-text">
+          <div class="module-tag">module: pid_rlc_control</div>
+          <div class="project-title">Analog PID Control of a Series RLC Circuit</div>
+          <div class="project-tech">LTspice / KiCad / Op-Amp Analog Design</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="project-more">
+        <div class="project-more-inner">
+      <a class="project-link" href="https://github.com/IKGB105/PID-RLC" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/IKGB105/PID-RLC
+            </a>
+      <div class="project-desc">Team project (with <a href="https://github.com/DasReyxr" target="_blank" rel="noopener">Orlando Contreras</a> and <a href="https://github.com/Gyonyu" target="_blank" rel="noopener">Kevin Lara</a>): op-amp based PID controller designed by root locus / pole placement to eliminate the step-response overshoot of an underdamped series RLC plant (f₀ ≈ 5 kHz, ζ ≈ 0.2, predicted ~53% open-loop overshoot). First of two related course projects — the second applies the same PID methodology to a buck converter.</div>
         </div>
       </div>
     </div>
